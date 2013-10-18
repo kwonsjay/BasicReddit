@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Redditclonetdd</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<% if logged_in? %>
+		<%= current_user.username %>
+		<%= button_to "Log Out", session_url, method: :delete %>
+	<% else %>
+		<%= link_to "Sign In", new_session_url %>
+		<%= link_to "Sign Up", new_user_url %>
+		<br>
+	<% end %>
+
+	<% if flash.now[:errors] %>
+		<% flash.now[:errors].each do |error| %>
+			<%= error %>
+		<% end %>
+	<% end %>
+
+<%= yield %>
+
+</body>
+</html>

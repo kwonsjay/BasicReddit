@@ -1,0 +1,28 @@
+<form action="<%= subs_url %>" method="post" accept-charset="utf-8">
+	<input type="hidden"  name="authenticity_token" value="<%= form_authenticity_token %>">
+	<label for="sub_title">Subreddit Name:</label>
+	<input type="text" name="sub[title]" value="" id="sub_title">
+	<br>
+
+	<% 5.times do |n| %>
+
+	<h2>Link <%=n+1%> Creation</h2>
+
+	<label for="link_title">Title</label>
+	<input type="text" name="links[<%=n%>][title]" value="" id="link_title_<%=n%>">
+	<br>
+
+	<label for="link_body">Body</label>
+	<textarea name="links[<%=n%>][body]" value="" id="link_body_<%=n%>"></textarea>
+	<br>
+
+	<label for="link_url">URL</label><input type="text" name="links[<%=n%>][url]" value="" id="link_url_<%=n%>">
+	<br>
+
+	<input type="hidden" name="links[<%=n%>][user_id]" value="<%= current_user.id %>" id="link_user_id<%=n%>">
+	<br>
+
+	<% end %>
+
+	<p><input type="submit" value="Create Sub"></p>
+</form>

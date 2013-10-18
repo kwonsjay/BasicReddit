@@ -1,0 +1,12 @@
+<h1>List of All Subs</h1>
+
+<table border="1" cellpadding="5">
+	<tr>
+		<th>Sub Names</th>
+	</tr>
+	<% @subs.each do |sub| %>
+	<tr>
+		<td><%= link_to "#{sub.title}", sub_url(sub) %> </td>
+	</tr>
+	<% end %>
+</table>

@@ -1,0 +1,7 @@
+<h1><%= @sub.title %></h1>
+<h3>Moderator: <%= @sub.user.username %></h3>
+<ul>
+<% @sub.links.each do |link| %>
+<li><%= link_to "#{link.title}", link_url(link) %></li>
+<% end %>
+</ul>
